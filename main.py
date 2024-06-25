@@ -27,6 +27,11 @@ states_i_care_about = [
     "FLORIDA",
 ]
 
+
+states_i_care_about = [
+    "PENNSYLVANIA",
+]
+
 unique_letters = set()
 for s in states_i_care_about:
     for c in s:
@@ -40,11 +45,11 @@ print(
 # [G, H, J, K, Q, V, W, Y]
 
 grid: list[str] = [
-    "SXLDS",
-    "KAOIA",
-    "MCRNG",
-    "ITERK",
-    "UCIWO",
+    "VMHWA",
+    "LCISQ",
+    "NOANG",
+    "TIROF",
+    "REGLI",
 ]
 # grid = ["".join(random.sample(unique_letters, SIZE)) for _ in range(SIZE)]
 # # mix up letters to make grid
@@ -53,8 +58,8 @@ flips = 4
 
 bests = []
 
-annealing_time = 100000
-start_flips = 8
+annealing_time = 50000
+start_flips = 10
 end_flips = 1
 
 

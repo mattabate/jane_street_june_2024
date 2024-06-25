@@ -1,13 +1,13 @@
 [
     [
-        231221865,
-        24,
+        240389149,
+        26,
         [
-            "SFLNS",
-            "KAOIA",
-            "MCRNG",
-            "ITERK",
-            "UCIWO"
+            "WSATS",
+            "GINEO",
+            "KROLW",
+            "IMAIO",
+            "HCNDR"
         ],
         [
             "CALIFORNIA",
@@ -22,18 +22,20 @@
             "VIRGINIA",
             "ARIZONA",
             "INDIANA",
+            "MARYLAND",
             "WISCONSIN",
             "COLORADO",
+            "MINNESOTA",
             "ALABAMA",
             "LOUISIANA",
-            "OREGON",
-            "CONNECTICUT",
             "IOWA",
+            "NEVADA",
             "ARKANSAS",
             "KANSAS",
-            "NEBRASKA",
+            "IDAHO",
+            "WESTVIRGINIA",
             "MAINE",
-            "ALASKA"
+            "MONTANA"
         ]
     ]
 ]
