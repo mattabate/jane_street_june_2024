@@ -15,7 +15,7 @@ Puzzle Link: [Jane Street Puzzles - Altered States 2](https://www.janestreet.com
 
 The code solution here implements a niave--but surprisingly high scoring--search approach for constructing high scoring grids.
 
-We start with an initial grid, and randomly alter `flips` number of characters. If the resulting grid admits a higher score than the previous grid, the search is restarted. Otherwise, we try again, allowing the search to run `ANNEALING_TIME` iterations--if a higher scoring grid has not been seen, the search ends and the highest scoring observed grid is returned. Importantly though, `flips` is a time varying parameter, begining as a large integer that decays to `1` as the current loop interation approaches the `ANNEALING_TIME`. This stocastic search scheme is sometimes refered to as __simulated anealing__. 
+We start with an initial grid, and randomly alter `temp` number of characters. If the resulting grid admits a higher score than the previous grid, the search is restarted. Otherwise, we try again, allowing the search to run `ANNEALING_TIME` iterations--if a higher scoring grid has not been seen, the search ends and the highest scoring observed grid is returned. Importantly though, `temp` is a time varying parameter, begining as a large integer that decays to `1` as the current loop interation approaches the `ANNEALING_TIME`. This stocastic search scheme is sometimes refered to as __simulated anealing__. 
 
 ## Repository Structure
 
