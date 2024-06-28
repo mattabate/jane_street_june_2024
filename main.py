@@ -133,7 +133,7 @@ if __name__ == "__main__":
     # # mix up letters to make grid
     grid: list[str] = ["".join(random.sample(IMPT_LETTERS, SIZE)) for _ in range(SIZE)]
 
-    bests = []
+    best_grids = []
 
     ANNEALING_TIME = 50000
     MAX_TEMP = 10
@@ -144,11 +144,11 @@ if __name__ == "__main__":
     best_grid = grid.copy()
 
     t0 = time.time()
-    flips = MAX_TEMP
-    flips_difference = MAX_TEMP - MIN_TEMP
+    temp = MAX_TEMP
+    delta_temp = MAX_TEMP - MIN_TEMP
     while True:
-        for tries in tqdm.tqdm(range(ANNEALING_TIME)):
-            new_grid = flip_random(best_grid, flips)
+        for i in tqdm.tqdm(range(ANNEALING_TIME)):
+            new_grid = flip_random(best_grid, temp)
 
             score, states = process(new_grid)
             if score > best_score:
@@ -160,14 +160,14 @@ if __name__ == "__main__":
                 print(states)
                 print("new best score:", "\033[93m", best_score, "\033[0m")
 
-                bests.append((best_score, len(states), best_grid, states))
+                best_grids.append((best_score, len(states), best_grid, states))
                 with open(SAVE_FILE, "w") as f:
-                    json.dump(bests, f, indent=4)
+                    json.dump(best_grids, f, indent=4)
                 break
 
             # flips == 25 when tries = 0 and flips = 2 when tries = annealing_time
-            flips = int(MAX_TEMP - (tries / ANNEALING_TIME) * flips_difference)
-            if tries > ANNEALING_TIME:
+            temp = int(MAX_TEMP - (i / ANNEALING_TIME) * delta_temp)
+            if i > ANNEALING_TIME:
                 break
         else:
             break
