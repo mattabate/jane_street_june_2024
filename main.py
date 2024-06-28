@@ -70,6 +70,17 @@ def word_possible_at_point(start: tuple[int, int], grid: list[str], word: str):
 
 
 def process(grid: list[str]) -> tuple[int, list[str]]:
+    """Return the score and states found in a grid.
+
+    Args:
+        grid (list[str]): the grid to process
+
+    Returns:
+        tuple[int, list[str]]: the score and states found in the grid
+
+    HACK: Score here is an underapproximation of true score since
+    # word_possible_at_point does not alway identify all words
+    """
     score = 0
     states = []
     for state, population in JSON_POPULATION:
@@ -125,7 +136,7 @@ if __name__ == "__main__":
     bests = []
 
     ANNEALING_TIME = 50000
-    FLIPS_MAX = 10
+    MAX_TEMP = 10
     MIN_TEMP = 1
 
     intial_score, _ = process(grid)
@@ -133,12 +144,11 @@ if __name__ == "__main__":
     best_grid = grid.copy()
 
     t0 = time.time()
-    flips = FLIPS_MAX
-    flips_difference = FLIPS_MAX - MIN_TEMP
+    flips = MAX_TEMP
+    flips_difference = MAX_TEMP - MIN_TEMP
     while True:
         for tries in tqdm.tqdm(range(ANNEALING_TIME)):
-            new_grid = best_grid.copy()
-            new_grid = flip_random(new_grid, flips)
+            new_grid = flip_random(best_grid, flips)
 
             score, states = process(new_grid)
             if score > best_score:
@@ -156,7 +166,7 @@ if __name__ == "__main__":
                 break
 
             # flips == 25 when tries = 0 and flips = 2 when tries = annealing_time
-            flips = int(FLIPS_MAX - (tries / ANNEALING_TIME) * flips_difference)
+            flips = int(MAX_TEMP - (tries / ANNEALING_TIME) * flips_difference)
             if tries > ANNEALING_TIME:
                 break
         else:
