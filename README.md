@@ -8,14 +8,14 @@ Puzzle Link: [Jane Street Puzzles - Altered States 2](https://www.janestreet.com
 
 ## Puzzle Overview
 
-"Altered States 2" challenges solvers to score as many points as possible by arranging the names of U.S. states in a 5x5 grid of letters. State's names are spelled out using King’s moves, and you are allowed to alter the name of each state by one letter. Each state in your grid contributes a score equal to its population in the 2020 census
-[2020 census](https://en.wikipedia.org/wiki/2020_United_States_census#State_rankings), and certain special solution tags are possible.
+"Altered States 2" challenges solvers to score as many points as possible by arranging the names of U.S. states in a 5x5 grid of letters. State's names are spelled out using King’s moves, and you are allowed to alter the name of each state by one letter. Each state in your grid contributes a score equal to its population in the
+[2020 census](https://en.wikipedia.org/wiki/2020_United_States_census#State_rankings), and certain special-grid-citations are possible.
 
 ## Solution Approach
 
 The code solution here implements a niave--but surprisingly high scoring--search approach for constructing high scoring grids.
 
-We start with an initial grid, and randomly alter `temp` number of characters. If the resulting grid admits a higher score than the previous grid, the search is restarted. Otherwise, we try again, allowing the search to run `ANNEALING_TIME` iterations--if a higher scoring grid has not been seen, the search ends and the highest scoring observed grid is returned. Importantly though, `temp` is a time varying parameter, begining as a large integer that decays to `1` as the current loop interation approaches the `ANNEALING_TIME`. This stocastic search scheme is sometimes refered to as __simulated anealing__. 
+We start with an initial grid, and randomly alter `temp` number of characters. If the resulting grid admits a higher score than the previous grid, the search is restarted. Otherwise, we try again, allowing the search to run `ANNEALING_TIME` iterationsand, if a higher scoring grid has not been seen, the search ends and the highest scoring observed grid is returned. Importantly, `temp` is a time varying parameter, begining as a large integer that decays to `1` as the current loop interation approaches the `ANNEALING_TIME`. This stocastic search scheme is sometimes refered to as __simulated anealing__. 
 
 ## Repository Structure
 
@@ -49,7 +49,7 @@ FOIAO
 LGRNH
 ```
 which scores `242536477` total points from 26 states! __California, Texas, Florida, New York, Illinois, Ohio, Maine, West Virginia, Idaho, Kansas, Arkansas, Iowa, Utah, Oregon, Louisiana, Alabama, Minnesota, Colorado, Wisconsin, Missouri, Indiana, Arizona, Virginia, New Jersey, Michigan, and Georgia__.
-(approximately 73% of the toal population in 2020). This submission also achives three special-rule-citations 
+(approximately 73% of the toal population in 2020). This submission also achives three special-grid-citations
 - 20S - over 20 states
 - 200M - over 200 million population
 - C2C - unbroken coast to cost state chain.
